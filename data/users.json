@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Dhyan Prajapati",
+    "email": "dhyan@example.com",
+    "password": "123456"
+  },
+  {
+    "id": 2,
+    "name": "Sister User",
+    "email": "sister@example.com",
+    "password": "123456"
+  },
+  {
+    "id": 3,
+    "name": "Mother User",
+    "email": "mother@example.com",
+    "password": "123456"
+  },
+  {
+    "id": 4,
+    "name": "aryan shah",
+    "email": "aryan@gmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 5,
+    "name": "alanzo",
+    "email": "alanzo@example.com",
+    "password": "123456"
+  }
+]

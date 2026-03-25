@@ -1,0 +1,358 @@
+[
+  {
+    "id": 1,
+    "airline": "Air India",
+    "from": "Delhi",
+    "to": "Mumbai",
+    "price": 5000
+  },
+  {
+    "id": 2,
+    "airline": "IndiGo",
+    "from": "Delhi",
+    "to": "Bangalore",
+    "price": 4500
+  },
+  {
+    "id": 3,
+    "airline": "SpiceJet",
+    "from": "Mumbai",
+    "to": "Goa",
+    "price": 3000
+  },
+  {
+    "id": 4,
+    "airline": "Vistara",
+    "from": "Bangalore",
+    "to": "Delhi",
+    "price": 4800
+  },
+
+  {
+    "id": 5,
+    "airline": "Air India",
+    "from": "Ahmedabad",
+    "to": "Delhi",
+    "price": 4000
+  },
+  {
+    "id": 6,
+    "airline": "IndiGo",
+    "from": "Ahmedabad",
+    "to": "Mumbai",
+    "price": 3500
+  },
+  {
+    "id": 7,
+    "airline": "SpiceJet",
+    "from": "Delhi",
+    "to": "Goa",
+    "price": 4200
+  },
+  {
+    "id": 8,
+    "airline": "Vistara",
+    "from": "Mumbai",
+    "to": "Bangalore",
+    "price": 3900
+  },
+
+  {
+    "id": 9,
+    "airline": "Air India",
+    "from": "Chennai",
+    "to": "Delhi",
+    "price": 5200
+  },
+  {
+    "id": 10,
+    "airline": "IndiGo",
+    "from": "Pune",
+    "to": "Delhi",
+    "price": 4100
+  },
+  {
+    "id": 11,
+    "airline": "SpiceJet",
+    "from": "Jaipur",
+    "to": "Mumbai",
+    "price": 3300
+  },
+  {
+    "id": 12,
+    "airline": "Vistara",
+    "from": "Delhi",
+    "to": "Chennai",
+    "price": 5100
+  },
+
+  {
+    "id": 13,
+    "airline": "Air India",
+    "from": "Mumbai",
+    "to": "Kolkata",
+    "price": 5500
+  },
+  {
+    "id": 14,
+    "airline": "IndiGo",
+    "from": "Kolkata",
+    "to": "Delhi",
+    "price": 4600
+  },
+  {
+    "id": 15,
+    "airline": "SpiceJet",
+    "from": "Goa",
+    "to": "Ahmedabad",
+    "price": 3700
+  },
+  {
+    "id": 16,
+    "airline": "Vistara",
+    "from": "Bangalore",
+    "to": "Pune",
+    "price": 3200
+  },
+
+  {
+    "id": 17,
+    "airline": "Air India",
+    "from": "Delhi",
+    "to": "Hyderabad",
+    "price": 4900
+  },
+  {
+    "id": 18,
+    "airline": "IndiGo",
+    "from": "Hyderabad",
+    "to": "Mumbai",
+    "price": 3600
+  },
+  {
+    "id": 19,
+    "airline": "SpiceJet",
+    "from": "Delhi",
+    "to": "Ahmedabad",
+    "price": 3000
+  },
+  {
+    "id": 20,
+    "airline": "Vistara",
+    "from": "Ahmedabad",
+    "to": "Bangalore",
+    "price": 4300
+  },
+
+  {
+    "id": 21,
+    "airline": "Air India",
+    "from": "Chennai",
+    "to": "Mumbai",
+    "price": 4800
+  },
+  {
+    "id": 22,
+    "airline": "IndiGo",
+    "from": "Mumbai",
+    "to": "Jaipur",
+    "price": 3400
+  },
+  {
+    "id": 23,
+    "airline": "SpiceJet",
+    "from": "Pune",
+    "to": "Goa",
+    "price": 2500
+  },
+  {
+    "id": 24,
+    "airline": "Vistara",
+    "from": "Delhi",
+    "to": "Pune",
+    "price": 4200
+  },
+
+  {
+    "id": 25,
+    "airline": "Air India",
+    "from": "Hyderabad",
+    "to": "Delhi",
+    "price": 5000
+  },
+  {
+    "id": 26,
+    "airline": "IndiGo",
+    "from": "Delhi",
+    "to": "Jaipur",
+    "price": 2800
+  },
+  {
+    "id": 27,
+    "airline": "SpiceJet",
+    "from": "Jaipur",
+    "to": "Goa",
+    "price": 3600
+  },
+  {
+    "id": 28,
+    "airline": "Vistara",
+    "from": "Mumbai",
+    "to": "Hyderabad",
+    "price": 3700
+  },
+
+  {
+    "id": 29,
+    "airline": "Air India",
+    "from": "Ahmedabad",
+    "to": "Chennai",
+    "price": 5300
+  },
+  {
+    "id": 30,
+    "airline": "IndiGo",
+    "from": "Chennai",
+    "to": "Bangalore",
+    "price": 2200
+  },
+  {
+    "id": 31,
+    "airline": "SpiceJet",
+    "from": "Delhi",
+    "to": "Kolkata",
+    "price": 4800
+  },
+  {
+    "id": 32,
+    "airline": "Vistara",
+    "from": "Kolkata",
+    "to": "Mumbai",
+    "price": 5100
+  },
+
+  {
+    "id": 33,
+    "airline": "Air India",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "price": 3100
+  },
+  {
+    "id": 34,
+    "airline": "IndiGo",
+    "from": "Hyderabad",
+    "to": "Goa",
+    "price": 2900
+  },
+  {
+    "id": 35,
+    "airline": "SpiceJet",
+    "from": "Mumbai",
+    "to": "Chennai",
+    "price": 4600
+  },
+  {
+    "id": 36,
+    "airline": "Vistara",
+    "from": "Delhi",
+    "to": "Ahmedabad",
+    "price": 3500
+  },
+
+  {
+    "id": 37,
+    "airline": "Air India",
+    "from": "Bangalore",
+    "to": "Goa",
+    "price": 2700
+  },
+  {
+    "id": 38,
+    "airline": "IndiGo",
+    "from": "Goa",
+    "to": "Delhi",
+    "price": 4300
+  },
+  {
+    "id": 39,
+    "airline": "SpiceJet",
+    "from": "Chennai",
+    "to": "Hyderabad",
+    "price": 2400
+  },
+  {
+    "id": 40,
+    "airline": "Vistara",
+    "from": "Jaipur",
+    "to": "Delhi",
+    "price": 2600
+  },
+
+  {
+    "id": 41,
+    "airline": "Air India",
+    "from": "Kolkata",
+    "to": "Chennai",
+    "price": 5200
+  },
+  {
+    "id": 42,
+    "airline": "IndiGo",
+    "from": "Pune",
+    "to": "Mumbai",
+    "price": 2000
+  },
+  {
+    "id": 43,
+    "airline": "SpiceJet",
+    "from": "Ahmedabad",
+    "to": "Jaipur",
+    "price": 3100
+  },
+  {
+    "id": 44,
+    "airline": "Vistara",
+    "from": "Hyderabad",
+    "to": "Bangalore",
+    "price": 2800
+  },
+
+  {
+    "id": 45,
+    "airline": "Air India",
+    "from": "Delhi",
+    "to": "Pune",
+    "price": 4700
+  },
+  {
+    "id": 46,
+    "airline": "IndiGo",
+    "from": "Mumbai",
+    "to": "Delhi",
+    "price": 4200
+  },
+  {
+    "id": 47,
+    "airline": "SpiceJet",
+    "from": "Goa",
+    "to": "Mumbai",
+    "price": 2600
+  },
+  {
+    "id": 48,
+    "airline": "Vistara",
+    "from": "Bangalore",
+    "to": "Kolkata",
+    "price": 5400
+  },
+
+  {
+    "id": 49,
+    "airline": "Air India",
+    "from": "Jaipur",
+    "to": "Delhi",
+    "price": 3000
+  },
+  { "id": 50, "airline": "IndiGo", "from": "Delhi", "to": "Goa", "price": 4500 }
+]

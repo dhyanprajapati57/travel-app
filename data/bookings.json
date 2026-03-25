@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1774245398074,
+    "userId": 1,
+    "type": "flight",
+    "name": "IndiGo",
+    "date": "2026-03-23T05:56:38.022Z"
+  },
+  {
+    "id": 1774246205350,
+    "userId": 1,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-23T06:10:05.286Z"
+  },
+  {
+    "id": 1774247918296,
+    "userId": 1,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-23T06:38:38.280Z"
+  },
+  {
+    "id": 1774248111328,
+    "userId": 1,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-23T06:41:51.264Z"
+  },
+  {
+    "id": 1774248312280,
+    "userId": 4,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-23T06:45:12.272Z"
+  },
+  {
+    "id": 1774248494731,
+    "userId": 4,
+    "type": "flight",
+    "name": "SpiceJet",
+    "date": "2026-03-23T06:48:14.728Z"
+  },
+  {
+    "id": 1774258393555,
+    "userId": 1,
+    "type": "hotel",
+    "name": "City Inn",
+    "date": "2026-03-23T09:33:13.512Z"
+  }
+]

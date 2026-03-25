@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "name": "Lake View Hotel",
+    "city": "Udaipur",
+    "price": 2500,
+    "photo": "https://source.unsplash.com/600x400/?hotel,lake"
+  },
+  {
+    "id": 2,
+    "name": "Sea Breeze Resort",
+    "city": "Goa",
+    "price": 5000,
+    "photo": "https://source.unsplash.com/600x400/?resort,beach"
+  },
+  {
+    "id": 3,
+    "name": "City Inn",
+    "city": "Ahmedabad",
+    "price": 3000,
+    "photo": "https://source.unsplash.com/600x400/?hotel,city"
+  },
+  {
+    "id": 4,
+    "name": "Royal Palace Hotel",
+    "city": "Jaipur",
+    "price": 3500,
+    "photo": "https://source.unsplash.com/600x400/?palace,hotel"
+  },
+  {
+    "id": 5,
+    "name": "Sunrise Hotel",
+    "city": "Delhi",
+    "price": 2800,
+    "photo": "https://source.unsplash.com/600x400/?hotel,sunrise"
+  },
+  {
+    "id": 6,
+    "name": "Grand Stay",
+    "city": "Mumbai",
+    "price": 4500,
+    "photo": "https://source.unsplash.com/600x400/?luxury,hotel"
+  },
+  {
+    "id": 7,
+    "name": "Comfort Inn",
+    "city": "Pune",
+    "price": 2600,
+    "photo": "https://source.unsplash.com/600x400/?inn,hotel"
+  },
+  {
+    "id": 8,
+    "name": "Hilltop Resort",
+    "city": "Manali",
+    "price": 5200,
+    "photo": "https://source.unsplash.com/600x400/?resort,hill"
+  },
+  {
+    "id": 9,
+    "name": "Desert Camp",
+    "city": "Jaisalmer",
+    "price": 4000,
+    "photo": "https://source.unsplash.com/600x400/?desert,hotel"
+  },
+  {
+    "id": 10,
+    "name": "Blue Lagoon Hotel",
+    "city": "Goa",
+    "price": 4800,
+    "photo": "https://source.unsplash.com/600x400/?lagoon,hotel"
+  },
+  {
+    "id": 11,
+    "name": "Green Park Hotel",
+    "city": "Hyderabad",
+    "price": 3200,
+    "photo": "https://source.unsplash.com/600x400/?green,hotel"
+  },
+  {
+    "id": 12,
+    "name": "Skyline Inn",
+    "city": "Bangalore",
+    "price": 3500,
+    "photo": "https://source.unsplash.com/600x400/?skyline,hotel"
+  },
+  {
+    "id": 13,
+    "name": "Royal Residency",
+    "city": "Jaipur",
+    "price": 3700,
+    "photo": "https://source.unsplash.com/600x400/?residency,hotel"
+  },
+  {
+    "id": 14,
+    "name": "Heritage Haveli",
+    "city": "Udaipur",
+    "price": 4200,
+    "photo": "https://source.unsplash.com/600x400/?heritage,hotel"
+  },
+  {
+    "id": 15,
+    "name": "Metro Hotel",
+    "city": "Delhi",
+    "price": 3000,
+    "photo": "https://source.unsplash.com/600x400/?metro,hotel"
+  },
+  {
+    "id": 16,
+    "name": "Palm Tree Resort",
+    "city": "Goa",
+    "price": 5500,
+    "photo": "https://source.unsplash.com/600x400/?palm,hotel"
+  },
+  {
+    "id": 17,
+    "name": "City Center Lodge",
+    "city": "Ahmedabad",
+    "price": 2700,
+    "photo": "https://source.unsplash.com/600x400/?lodge,city"
+  },
+  {
+    "id": 18,
+    "name": "Ocean View Stay",
+    "city": "Mumbai",
+    "price": 5000,
+    "photo": "https://source.unsplash.com/600x400/?ocean,hotel"
+  },
+  {
+    "id": 19,
+    "name": "Budget Inn",
+    "city": "Pune",
+    "price": 2200,
+    "photo": "https://source.unsplash.com/600x400/?budget,hotel"
+  },
+  {
+    "id": 20,
+    "name": "Snow Peak Hotel",
+    "city": "Shimla",
+    "price": 4800,
+    "photo": "https://source.unsplash.com/600x400/?snow,hotel"
+  },
+  {
+    "id": 21,
+    "name": "Golden Palace",
+    "city": "Jaipur",
+    "price": 3600,
+    "photo": "https://source.unsplash.com/600x400/?golden,hotel"
+  },
+  {
+    "id": 22,
+    "name": "Lake Palace Stay",
+    "city": "Udaipur",
+    "price": 6000,
+    "photo": "https://source.unsplash.com/600x400/?lake,palace"
+  },
+  {
+    "id": 23,
+    "name": "Capital Residency",
+    "city": "Delhi",
+    "price": 3400,
+    "photo": "https://source.unsplash.com/600x400/?residency,capital"
+  },
+  {
+    "id": 24,
+    "name": "Beachside Inn",
+    "city": "Goa",
+    "price": 4700,
+    "photo": "https://source.unsplash.com/600x400/?beach,inn"
+  },
+  {
+    "id": 25,
+    "name": "Urban Stay",
+    "city": "Bangalore",
+    "price": 3300,
+    "photo": "https://source.unsplash.com/600x400/?urban,hotel"
+  },
+  {
+    "id": 26,
+    "name": "Comfort Suites",
+    "city": "Hyderabad",
+    "price": 3100,
+    "photo": "https://source.unsplash.com/600x400/?suites,hotel"
+  },
+  {
+    "id": 27,
+    "name": "Royal Suites",
+    "city": "Mumbai",
+    "price": 5200,
+    "photo": "https://source.unsplash.com/600x400/?royal,suites"
+  },
+  {
+    "id": 28,
+    "name": "Desert Rose Hotel",
+    "city": "Jaisalmer",
+    "price": 4100,
+    "photo": "https://source.unsplash.com/600x400/?desert,rose"
+  },
+  {
+    "id": 29,
+    "name": "Green Valley Resort",
+    "city": "Manali",
+    "price": 5300,
+    "photo": "https://source.unsplash.com/600x400/?green,valley"
+  },
+  {
+    "id": 30,
+    "name": "Business Inn",
+    "city": "Delhi",
+    "price": 2900,
+    "photo": "https://source.unsplash.com/600x400/?business,inn"
+  },
+  {
+    "id": 31,
+    "name": "City Comfort Hotel",
+    "city": "Ahmedabad",
+    "price": 2600,
+    "photo": "https://source.unsplash.com/600x400/?city,comfort"
+  },
+  {
+    "id": 32,
+    "name": "Palm Residency",
+    "city": "Goa",
+    "price": 5100,
+    "photo": "https://source.unsplash.com/600x400/?palm,residency"
+  },
+  {
+    "id": 33,
+    "name": "Sky View Hotel",
+    "city": "Bangalore",
+    "price": 3400,
+    "photo": "https://source.unsplash.com/600x400/?sky,hotel"
+  },
+  {
+    "id": 34,
+    "name": "Classic Inn",
+    "city": "Pune",
+    "price": 2300,
+    "photo": "https://source.unsplash.com/600x400/?classic,inn"
+  },
+  {
+    "id": 35,
+    "name": "Royal Heritage Stay",
+    "city": "Jaipur",
+    "price": 3900,
+    "photo": "https://source.unsplash.com/600x400/?heritage,royal"
+  },
+  {
+    "id": 36,
+    "name": "Lake Side Resort",
+    "city": "Udaipur",
+    "price": 5800,
+    "photo": "https://source.unsplash.com/600x400/?lake,resort"
+  },
+  {
+    "id": 37,
+    "name": "Metro Palace",
+    "city": "Mumbai",
+    "price": 4700,
+    "photo": "https://source.unsplash.com/600x400/?metro,palace"
+  },
+  {
+    "id": 38,
+    "name": "Ocean Breeze Hotel",
+    "city": "Goa",
+    "price": 5400,
+    "photo": "https://source.unsplash.com/600x400/?ocean,breeze"
+  },
+  {
+    "id": 39,
+    "name": "Hill View Stay",
+    "city": "Shimla",
+    "price": 4500,
+    "photo": "https://source.unsplash.com/600x400/?hill,view"
+  },
+  {
+    "id": 40,
+    "name": "Capital Lodge",
+    "city": "Delhi",
+    "price": 3000,
+    "photo": "https://source.unsplash.com/600x400/?capital,lodge"
+  },
+  {
+    "id": 41,
+    "name": "Urban Residency",
+    "city": "Hyderabad",
+    "price": 3100,
+    "photo": "https://source.unsplash.com/600x400/?urban,residency"
+  },
+  {
+    "id": 42,
+    "name": "Sunset Resort",
+    "city": "Goa",
+    "price": 5600,
+    "photo": "https://source.unsplash.com/600x400/?sunset,resort"
+  },
+  {
+    "id": 43,
+    "name": "Comfort Palace",
+    "city": "Ahmedabad",
+    "price": 2800,
+    "photo": "https://source.unsplash.com/600x400/?comfort,palace"
+  },
+  {
+    "id": 44,
+    "name": "Business Stay",
+    "city": "Bangalore",
+    "price": 3600,
+    "photo": "https://source.unsplash.com/600x400/?business,stay"
+  },
+  {
+    "id": 45,
+    "name": "Golden Sands Hotel",
+    "city": "Goa",
+    "price": 6000,
+    "photo": "https://source.unsplash.com/600x400/?golden,sands"
+  },
+  {
+    "id": 46,
+    "name": "City Palace Inn",
+    "city": "Jaipur",
+    "price": 3500,
+    "photo": "https://source.unsplash.com/600x400/?city,palace"
+  },
+  {
+    "id": 47,
+    "name": "Lake Crown Hotel",
+    "city": "Udaipur",
+    "price": 6200,
+    "photo": "https://source.unsplash.com/600x400/?lake,crown"
+  },
+  {
+    "id": 48,
+    "name": "Metro Budget Stay",
+    "city": "Delhi",
+    "price": 2500,
+    "photo": "https://source.unsplash.com/600x400/?metro,budget"
+  },
+  {
+    "id": 49,
+    "name": "Hill Resort Deluxe",
+    "city": "Manali",
+    "price": 5500,
+    "photo": "https://source.unsplash.com/600x400/?hill,resort"
+  },
+  {
+    "id": 50,
+    "name": "Urban Grand Hotel",
+    "city": "Mumbai",
+    "price": 5800,
+    "photo": "https://source.unsplash.com/600x400/?urban,grand"
+  }
+]
