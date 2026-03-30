@@ -24,7 +24,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    //  Get token
+    //  Get token (optional chaining already correct)
     const cookieStore = await cookies();
     const token = cookieStore.get("token")?.value;
 
@@ -38,6 +38,7 @@ export async function POST(req: Request) {
     let user: User;
 
     try {
+
       user = jwt.verify(token, SECRET) as User;
     } catch {
       return NextResponse.json(
@@ -65,18 +66,18 @@ export async function POST(req: Request) {
       bookings = []; // fallback if file corrupted
     }
 
-    //  Validation
-    if (!body.type || !body.name || !body.date) {
+    //  Validation (use optional chaining here)
+    if (!body?.type || !body?.name || !body?.date) {
       return NextResponse.json(
         { message: "Invalid booking data" },
         { status: 400 }
       );
     }
 
-    //  New booking
+    //  New booking (safe user access optional but good practice)
     const newBooking: Booking = {
       id: Date.now(),
-      userId: user.id,
+      userId: user?.id, // safe (though user always exists here)
       type: body.type,
       name: body.name,
       date: body.date,
@@ -89,10 +90,13 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: "Booked successfully" });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json(
-      { message: "Something went wrong" },
+      {
+        message:
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (error as any)?.message || "Something went wrong", //  optional chaining
+      },
       { status: 500 }
     );
   }

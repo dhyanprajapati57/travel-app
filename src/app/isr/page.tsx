@@ -1,4 +1,3 @@
-// app/isr-page/page.tsx
 import Link from "next/link";
 import React from "react";
 
@@ -36,6 +35,25 @@ export default async function ISRPage() {
           <strong>ISR = chef prepares meals in advance (SSG)</strong>, but every
           10 minutes, they refresh some dishes with fresh food. Visitors get
           mostly static pages, but with **recent updates automatically**.
+        </p>
+        <p>
+          BUILD TIME:
+          → Generate static page
+
+           RUNTIME:
+           START
+           User requests page
+          → Serve static HTML
+
+           IF (time greterthen revalidate limit)
+          → Trigger background regeneration
+          → Fetch new data
+          → Generate new HTML
+          → Replace old page
+           END IF
+
+          Next user gets updated page
+          END
         </p>
       </section>
 

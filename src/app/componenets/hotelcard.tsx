@@ -9,7 +9,7 @@ interface HotelCardProps {
 export default function HotelCard({ hotel }: HotelCardProps) {
   return (
     <Link href={`/hotels/${hotel.id}`} className="block">
-      <div className="border p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform transition-shadow duration-300 cursor-pointer">
+      <div className="border p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
         <h2 className="text-lg font-bold">{hotel.name}</h2>
         <p className="text-white-600">Location: {hotel.city}</p>
         <p className="text-white-800 font-medium">Price per night: ₹{hotel.price}</p>

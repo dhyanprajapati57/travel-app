@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server"; //modified response
-import type { NextRequest } from "next/server"; //next http request
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
-  const { pathname } = req.nextUrl; //name of url path
+  const { pathname } = req.nextUrl;
 
   if (pathname.startsWith("/dashboard") && !token) {
     return NextResponse.redirect(new URL("/login", req.url));
@@ -12,7 +12,7 @@ export function middleware(req: NextRequest) {
   if (pathname === "/login" && token) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
-
+  
   return NextResponse.next();
 }
 
@@ -23,76 +23,6 @@ export const config = {
 //  Checks user login (token)
 //  Allows or blocks access
 //  code that runs between a request and a response.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

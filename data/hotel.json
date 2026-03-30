@@ -55,7 +55,7 @@
     "price": 5200,
     "photo": "https://source.unsplash.com/600x400/?resort,hill"
   },
-  {
+  { 
     "id": 9,
     "name": "Desert Camp",
     "city": "Jaisalmer",

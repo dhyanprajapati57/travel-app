@@ -20,9 +20,14 @@ export const bookingsSlice = createSlice({
   initialState,
   reducers: {
     addBooking: (state, action: PayloadAction<Booking>) => {
-      state.bookings.push(action.payload);
+      //  optional chaining (defensive, not required)
+      if (action?.payload) {
+        state.bookings.push(action.payload);
+      }
     },
+
     clearBookings: (state) => {
+      //  no need for optional chaining here
       state.bookings = [];
     },
   },

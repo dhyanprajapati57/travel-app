@@ -10,10 +10,14 @@ export default function CSRPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const postsRes = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const postsRes = await fetch(
+        "https://jsonplaceholder.typicode.com/posts",
+      );
       const postsData = await postsRes.json();
 
-      const usersRes = await fetch("https://jsonplaceholder.typicode.com/users");
+      const usersRes = await fetch(
+        "https://jsonplaceholder.typicode.com/users",
+      );
       const usersData = await usersRes.json();
 
       setPosts(postsData);
@@ -35,35 +39,47 @@ export default function CSRPage() {
       <section className="p-4 border rounded bg-blue-50">
         <h2 className="text-2xl font-semibold mb-2">What is CSR?</h2>
         <p className="mb-1">
-          Client-Side Rendering (CSR) means the browser builds the webpage after it loads using JavaScript.
+          Client-Side Rendering (CSR) means the browser builds the webpage after
+          it loads using JavaScript.
         </p>
         <p className="mb-1">
-          The server only sends a mostly empty HTML shell, and the browser does the heavy lifting.
+          The server only sends a mostly empty HTML shell, and the browser does
+          the heavy lifting.
         </p>
         <p>
-          Think of it like this: <strong>CSR = you cook the meal yourself at the table</strong>.  
-          You can eat only after everything is prepared in the browser.
+          Think of it like this:{" "}
+          <strong>CSR = you cook the meal yourself at the table</strong>. You
+          can eat only after everything is prepared in the browser.
+        </p>
+        <p>
+          START User requests page → Server sends empty HTML + JS bundle →
+          Browser loads JS → JS executes → JS calls API to fetch data → Data
+          received → UI is rendered in browser END
         </p>
       </section>
 
       {/* Posts Data */}
       <section className="p-4 border rounded">
         <h2 className="text-xl font-semibold mb-2">Posts (CSR)</h2>
-        <p>Total Posts fetched in browser: <strong>{posts.length}</strong></p>
+        <p>
+          Total Posts fetched in browser: <strong>{posts.length}</strong>
+        </p>
       </section>
 
       {/* Users Data */}
       <section className="p-4 border rounded">
         <h2 className="text-xl font-semibold mb-2">Users (CSR)</h2>
-        <p>Total Users fetched in browser: <strong>{users.length}</strong></p>
+        <p>
+          Total Users fetched in browser: <strong>{users.length}</strong>
+        </p>
       </section>
-       <div>
+      <div>
         <button>
           <Link href="/" className="text-gray-700 hover:text-blue-600">
             back
           </Link>
-          </button>
-        </div>
+        </button>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 
 export default async function SSRPage() {
-
   // Fetch posts (fresh every request)
   const resPosts = await fetch("https://jsonplaceholder.typicode.com/posts", {
     cache: "no-store", // true SSR
@@ -29,23 +28,31 @@ export default async function SSRPage() {
           finished HTML before sending it to your browser.
         </p>
         <p className="mb-1">
-          Instead of your browser building the page with JavaScript like standard React,
-          the server does all the heavy lifting first.
+          Instead of your browser building the page with JavaScript like
+          standard React, the server does all the heavy lifting first.
         </p>
         <p>
-          Think of it like this: <strong>SSR = chef cooks the meal in the kitchen</strong>
-          and brings you ready-to-eat food, while CSR = you cook it yourself at the table.
+          Think of it like this:{" "}
+          <strong>SSR = chef cooks the meal in the kitchen</strong>
+          and brings you ready-to-eat food, while CSR = you cook it yourself at
+          the table.
+        </p>
+        <p>
+          START User requests page → Server receives request → Server fetches
+          data (DB/API) → Server generates full HTML with data → Send HTML to
+          browser → Browser displays content END
         </p>
       </section>
 
       {/* Posts Data */}
       <section className="p-4 border rounded">
         <h2 className="text-xl font-semibold mb-2">Posts (SSR)</h2>
-        <p>Total Posts fetched from API: <strong>{posts.length}</strong></p>
+        <p>
+          Total Posts fetched from API: <strong>{posts.length}</strong>
+        </p>
       </section>
 
-
-       <section className="p-4 border rounded">
+      <section className="p-4 border rounded">
         <h2 className="text-xl font-semibold mb-2">KEY</h2>
         <p>cache : no-store;</p>
       </section>
@@ -53,15 +60,17 @@ export default async function SSRPage() {
       {/* Users Data */}
       <section className="p-4 border rounded">
         <h2 className="text-xl font-semibold mb-2">Users (SSR)</h2>
-        <p>Total Users fetched from API: <strong>{users.length}</strong></p>
+        <p>
+          Total Users fetched from API: <strong>{users.length}</strong>
+        </p>
       </section>
-       <div>
+      <div>
         <button>
           <Link href="/" className="text-gray-700 hover:text-blue-600">
             back
           </Link>
-          </button>
-        </div>
+        </button>
+      </div>
     </div>
   );
 }

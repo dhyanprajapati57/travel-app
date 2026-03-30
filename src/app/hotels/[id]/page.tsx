@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Hotel } from "../../../../types/hotel";
-import Button from "../../../../componenets/button";
+import { Hotel } from "../../types/hotel";
+import Button from "../../componenets/button";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import axios from "../../lib/axios";
 
 export default function HotelDetails() {
   const params = useParams();
@@ -14,93 +14,99 @@ export default function HotelDetails() {
 
   const [hotel, setHotel] = useState<Hotel | null>(null);
   const [loading, setLoading] = useState(false);
+  const [fetchLoading, setFetchLoading] = useState(true);
 
-  // Fetch hotel
   useEffect(() => {
     const fetchHotel = async () => {
-      const res = await fetch(`/api/hotels/${params.id}`);
-      const data: Hotel = await res.json();
-      setHotel(data);
+      try {
+        //  safe param access
+        const res = await axios.get(`/hotels/${params?.id}`);
+        setHotel(res?.data);
+      } catch (error) {
+        console.error("Hotel not found", error);
+        setHotel(null);
+      } finally {
+        setFetchLoading(false);
+      }
     };
-    fetchHotel();
-  }, [params.id]);
 
-  // Booking
+    if (params?.id) fetchHotel(); //  safe check
+  }, [params?.id]);
+
   const handleBooking = async () => {
     if (!hotel) return;
 
     setLoading(true);
 
     try {
-      const res = await fetch("/api/book", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "hotel",
-          name: hotel.name,
-          date: new Date().toISOString(),
-        }),
+      await axios.post("/book", {
+        type: "hotel",
+        name: hotel?.name, //  safe
+        date: new Date().toISOString(),
       });
 
-      if (res.status === 401) {
+      toast.success("Hotel booked successfully!");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      //  already correct usage
+      if (error?.response?.status === 401) {
         toast.error("Please login first!");
         setTimeout(() => router.push("/login"), 1000);
-        return;
+      } else {
+        // optional chaining for message
+        const msg =
+          error?.response?.data?.message || "Booking failed!";
+        toast.error(msg);
       }
-
-      if (!res.ok) {
-        toast.error("Booking failed!");
-        return;
-      }
-
-      toast.success("Hotel booked successfully!");
-    } catch (error) {
-      toast.error("Something went wrong!");
     } finally {
       setLoading(false);
     }
   };
 
-  if (!hotel)
+  // Loading UI
+  if (fetchLoading) {
     return (
       <p className="p-6 text-center text-gray-500 animate-pulse">
         Loading hotel details...
       </p>
     );
+  }
+
+  // Not found
+  if (!hotel) {
+    return (
+      <p className="p-6 text-center text-red-500">
+        Hotel not found
+      </p>
+    );
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-5">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 p-5">
       <div className="max-w-xl w-full bg-white rounded-2xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
         
-        {/* Title */}
         <h1 className="text-3xl font-bold text-blue-600 mb-4">
-          {hotel.name}
+          {hotel?.name}
         </h1>
 
-        {/* Info */}
         <div className="space-y-2 text-gray-700">
           <p>
             <span className="font-semibold text-gray-900">City:</span>{" "}
-            {hotel.city}
+            {hotel?.city}
           </p>
           <p>
             <span className="font-semibold text-gray-900">Price:</span>{" "}
             <span className="text-green-600 font-bold">
-              ₹{hotel.price}
+              ₹{hotel?.price}
             </span>{" "}
             / night
           </p>
         </div>
 
-        {/* Divider */}
         <div className="my-5 border-t"></div>
 
-        {/* Buttons */}
         <div className="flex gap-4">
-          {/* Book Button */}
-          <button
+          <Button
             onClick={handleBooking}
             disabled={loading}
             className={`
@@ -113,9 +119,8 @@ export default function HotelDetails() {
             `}
           >
             {loading ? "Booking..." : "Book Hotel"}
-          </button>
+          </Button>
 
-          {/* Back Button */}
           <Link
             href="/hotels"
             className="flex-1 text-center py-2 rounded-lg bg-gray-200 text-gray-800 

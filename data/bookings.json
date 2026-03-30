@@ -47,5 +47,82 @@
     "type": "hotel",
     "name": "City Inn",
     "date": "2026-03-23T09:33:13.512Z"
+  },
+  {
+    "id": 1774588420207,
+    "userId": 1,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-27T05:13:40.196Z"
+  },
+  {
+    "id": 1774588601271,
+    "userId": 1,
+    "type": "flight",
+    "name": "Air India",
+    "date": "2026-03-27T05:16:41.261Z"
+  },
+  {
+    "id": 1774588708863,
+    "userId": 1,
+    "type": "flight",
+    "name": "Air India",
+    "date": "2026-03-27T05:18:28.853Z"
+  },
+  {
+    "id": 1774590726092,
+    "userId": 1,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-27T05:52:06.080Z"
+  },
+  {
+    "id": 1774591354923,
+    "userId": 1,
+    "type": "flight",
+    "name": "Vistara",
+    "date": "2026-03-27T06:02:34.913Z"
+  },
+  {
+    "id": 1774592376924,
+    "userId": 1,
+    "type": "flight",
+    "name": "IndiGo",
+    "date": "2026-03-27T06:19:36.898Z"
+  },
+  {
+    "id": 1774594111639,
+    "userId": 5,
+    "type": "flight",
+    "name": "Vistara",
+    "date": "2026-03-27T06:48:31.581Z"
+  },
+  {
+    "id": 1774605631714,
+    "userId": 1,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-27T10:00:31.647Z"
+  },
+  {
+    "id": 1774613846023,
+    "userId": 8,
+    "type": "flight",
+    "name": "SpiceJet",
+    "date": "2026-03-27T12:17:26.012Z"
+  },
+  {
+    "id": 1774847268400,
+    "userId": 9,
+    "type": "hotel",
+    "name": "Sea Breeze Resort",
+    "date": "2026-03-30T05:07:48.346Z"
+  },
+  {
+    "id": 1774849116687,
+    "userId": 9,
+    "type": "flight",
+    "name": "IndiGo",
+    "date": "2026-03-30T05:38:36.627Z"
   }
 ]

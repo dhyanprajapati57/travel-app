@@ -2,71 +2,74 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { Flight } from "../../../../types/flight";
+import { Flight } from "../../types/flight";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import Button from "../../componenets/button";
+import axios from "../../lib/axios"; //  Axios
 
 export default function FlightDetails() {
   const params = useParams();
   const [flight, setFlight] = useState<Flight | null>(null);
   const [loading, setLoading] = useState(false);
+  const [fetchLoading, setFetchLoading] = useState(true);
 
-  // Fetch flight
+  //  Fetch flight using Axios
   useEffect(() => {
     const fetchFlight = async () => {
-      const res = await fetch(`/api/flight/${params.id}`);
-      if (!res.ok) {
-        console.error("Flight not found");
+      try {
+        const res = await axios.get(`/flight/${params.id}`);
+        setFlight(res.data);
+      } catch (error) {
+        console.error("Flight not found", error);
         setFlight(null);
-        return;
+      } finally {
+        setFetchLoading(false);
       }
-      const data: Flight = await res.json();
-      setFlight(data);
     };
-    fetchFlight();
+
+    if (params.id) fetchFlight();
   }, [params.id]);
 
-  // Booking
+  //  Booking using Axios
   const handleBooking = async () => {
     if (!flight) return;
 
     setLoading(true);
 
     try {
-      const res = await fetch("/api/book", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "flight",
-          name: flight.airline,
-          date: new Date().toISOString(),
-        }),
+      await axios.post("/book", {
+        type: "flight",
+        name: flight.airline,
+        date: new Date().toISOString(),
       });
-
-      if (!res.ok) {
-        toast.error("Booking failed!");
-        return;
-      }
 
       toast.success("Flight booked successfully!");
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      toast.error("Something went wrong!");
+      toast.error("Booking failed!");
     } finally {
       setLoading(false);
     }
   };
 
-  // Loading UI
-  if (!flight)
+  //  Loading UI
+  if (fetchLoading) {
     return (
       <p className="p-6 text-center text-gray-500 animate-pulse">
         Loading flight details...
       </p>
     );
+  }
+
+  //  No flight found
+  if (!flight) {
+    return (
+      <p className="p-6 text-center text-red-500">
+        Flight not found
+      </p>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-purple-50 to-blue-100 p-5">
@@ -100,27 +103,20 @@ export default function FlightDetails() {
 
         {/* Buttons */}
         <div className="flex gap-4">
+          
           {/* Book Button */}
-          <button
+          <Button
             onClick={handleBooking}
             disabled={loading}
-            className={`
-              flex-1 py-2 rounded-lg font-medium text-white transition-all duration-300
-              ${
-                loading
-                  ? "bg-purple-300 cursor-not-allowed"
-                  : "bg-purple-600 hover:bg-purple-700 active:scale-95 shadow-md hover:shadow-lg"
-              }
-            `}
+            className="flex-1 bg-purple-600 hover:bg-purple-700"
           >
             {loading ? "Booking..." : "Book Flight"}
-          </button>
+          </Button>
 
           {/* Back Button */}
           <Link
             href="/flights"
-            className="flex-1 text-center py-2 rounded-lg bg-gray-200 text-gray-800 
-            hover:bg-gray-300 transition-all duration-300 active:scale-95 shadow-sm"
+            className="flex-1 text-center py-2 rounded-lg bg-gray-200 text-gray-800 hover:bg-gray-300 transition-all duration-300 active:scale-95 shadow-sm"
           >
             Back
           </Link>

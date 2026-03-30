@@ -1,5 +1,56 @@
 [
-  { "id": 1, "name": "Dhyan Prajapati", "email": "dhyan@example.com", "password": "123456" },
-  { "id": 2, "name": "Sister User", "email": "sister@example.com", "password": "123456" },
-  { "id": 3, "name": "Mother User", "email": "mother@example.com", "password": "123456" }
+  {
+    "id": 1,
+    "name": "Dhyan Prajapati",
+    "email": "dhyan@example.com",
+    "password": "123456"
+  },
+  {
+    "id": 2,
+    "name": "Sister User",
+    "email": "sister@example.com",
+    "password": "123456"
+  },
+  {
+    "id": 3,
+    "name": "Mother User",
+    "email": "mother@example.com",
+    "password": "123456"
+  },
+  {
+    "id": 4,
+    "name": "Cleo Russo",
+    "email": "jawuqusude@yopmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 5,
+    "name": "Lance Horn",
+    "email": "laneputy@yopmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 6,
+    "name": "Ryan Norman",
+    "email": "gyreva@yopmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 7,
+    "name": "Hayley Mays",
+    "email": "bohuj@yopmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 8,
+    "name": "Barry Knight",
+    "email": "tidamavaca@yopmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 9,
+    "name": "Amethyst Jones",
+    "email": "xocamepaf@yopmail.com",
+    "password": "123456"
+  }
 ]

@@ -1,13 +1,12 @@
 
 import "./globals.css";
 import Providers from "../app/provider";
-import Navbar from "../../componenets/Navbar";
+import Navbar from "./componenets/Navbar";
 
 export const metadata = {
   title: "Travel App",
   description: "Book flights and hotels easily",
 };
-
 
 export default function RootLayout({
   children,
@@ -23,5 +22,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  );
+  );  
 }

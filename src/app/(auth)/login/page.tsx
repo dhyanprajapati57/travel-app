@@ -2,10 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { login } from "../../../../redux/slice/authslice";
+import { loginUser } from "../../redux/slice/authslice";
 import { toast, ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form";
-import InputField from "../../../../componenets/inputfaild";
+import InputField from "../../componenets/inputfaild";
+import Button from "../../componenets/button";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 type FormData = {
   email: string;
@@ -14,7 +17,10 @@ type FormData = {
 
 export default function Login() {
   const router = useRouter();
-  const dispatch = useDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const dispatch: any = useDispatch();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -23,18 +29,10 @@ export default function Login() {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-      credentials: "include",
-    });
+    const res = await dispatch(loginUser(data));
 
-    if (res.ok) {
-      const user = await res.json();
-      dispatch(login(user));
+    if (res.meta.requestStatus === "fulfilled") {
+      toast.success("Login Successful", { autoClose: 1000 });
       router.push("/dashboard");
     } else {
       toast.error("Invalid credentials", { autoClose: 1000 });
@@ -43,70 +41,49 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-        {/* Title */}
-        <h1 className="text-3xl font-bold mb-6 text-center text-blue-600 tracking-wide">
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6">
+        
+        <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">
           Login
         </h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          {/* Email */}
-          <div className="transition-all duration-200 focus-within:scale-[1.02]">
-            <InputField
-              label="Email"
-              type="email"
-              placeholder="Enter email"
-              name="email"
-              register={register}
-              error={errors.email?.message}
-            />
-          </div>
+          
+          <InputField
+            label="Email"
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            register={register}
+            error={errors.email?.message}
+          />
 
-          {/* Password */}
-          <div className="transition-all duration-200 focus-within:scale-[1.02]">
+          <div className="relative">
             <InputField
               label="Password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Enter password"
               name="password"
               register={register}
               error={errors.password?.message}
             />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-9.5 text-gray-500"
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
           </div>
 
-          {/* Button */}
-          <button
-            className="
-              w-full py-2 rounded-lg text-white font-medium
-              bg-blue-600 hover:bg-blue-700 
-              active:scale-95
-              transition-all duration-300
-              shadow-md hover:shadow-lg
-            "
-          >
-            Login
-          </button>
+          <Button type="submit">Login</Button>
         </form>
 
-        {/* Divider */}
-        <div className="my-5 flex items-center gap-2">
-          <div className="flex-1 h-px bg-gray-300"></div>
-          <span className="text-gray-400 text-sm">OR</span>
-          <div className="flex-1 h-px bg-gray-300"></div>
-        </div>
-
-        {/* Register */}
-        <p className="text-center text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
-          <a
-            href="/register"
-            className="
-              text-blue-600 font-medium 
-              hover:text-blue-800 hover:underline
-              transition-all duration-200
-            "
-          >
-            Register first
+        <p className="text-center text-sm mt-4">
+          Dont have an account?{" "}
+          <a href="/register" className="text-blue-600">
+            Register
           </a>
         </p>
       </div>

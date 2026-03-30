@@ -38,6 +38,21 @@ export default async function SSGPage() {
           . When you come, you grab a ready meal — no waiting. But if you want a
           new dish, the chef has to cook a new batch (site rebuild).
         </p>
+        <p>
+          BUILD TIME:
+             START
+            → Fetch data
+            → Generate HTML pages
+            → Store as static files
+            END
+
+          RUNTIME:
+            START
+            User requests page
+            → Server returns pre-built HTML
+            → Browser displays instantly
+          END
+        </p>
       </section>
 
       {/* Posts Data */}

@@ -1,16 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import axios from "../lib/axios"; // adjust path if needed
 
 export default function LogoutButton() {
   const router = useRouter();
 
   const handleLogout = async () => {
-    await fetch("/api/logout", {
-      method: "POST",
-    });
-
-    router.push("/");
+    try {
+      await axios.post("/logout"); // baseURL = /api
+      router.push("/");
+    } catch (error) {
+      console.log("Logout error:", error);
+    }
   };
 
   return (

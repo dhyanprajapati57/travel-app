@@ -9,7 +9,7 @@ interface FlightCardProps {
 export default function FlightCard({ flight }: FlightCardProps) {
   return (
     <Link href={`/flights/${flight.id}`} className="block">
-      <div className="border p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform transition-shadow duration-300 cursor-pointer">
+      <div className="border p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
         <h2 className="text-lg font-bold">{flight.airline}</h2>
         <p className="text-white-600">{flight.from} → {flight.to}</p>
         <p className="text-white-600 font-medium">Price: ₹{flight.price}</p>
