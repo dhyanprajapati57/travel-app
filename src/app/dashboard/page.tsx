@@ -90,11 +90,11 @@ export default async function Dashboard() {
 
         <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
 
-        {bookings?.length === 0 ? ( //  optional chaining
+        {bookings?.length === 0 ? ( 
           <p>No bookings yet</p>
         ) : (
           <ul className="space-y-3">
-            {bookings?.map((b: Booking) => ( //  optional chaining
+            {bookings?.map((b: Booking) => ( 
               <li key={b?.id} className="border p-3 rounded bg-black/50">
                 <strong>{b?.type?.toUpperCase()}</strong> - {b?.name} <br />
                 <span className="text-sm text-gray-200">

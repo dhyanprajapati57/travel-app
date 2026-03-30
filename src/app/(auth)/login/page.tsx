@@ -6,7 +6,7 @@ import { loginUser } from "../../redux/slice/authslice";
 import { toast, ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form";
 import InputField from "../../componenets/inputfaild";
-import Button from "../../componenets/button";
+import { Button } from "../../componenets/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";

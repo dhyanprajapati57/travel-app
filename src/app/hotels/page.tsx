@@ -14,7 +14,7 @@ export default function Hotels() {
   const dispatch = useDispatch<AppDispatch>();
 
   const { hotels, loading } = useSelector(
-    (state: RootState) => state.hotels
+    (state: RootState) => state.hotels  
   );
 
   const searchParams = useSearchParams();
