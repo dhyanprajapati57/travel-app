@@ -58,7 +58,7 @@ const {
           <InputField
             label="Name"
             type="text"
-            placeholder="Enter name"
+            placeholder="Enter name"  
             name="name"
             register={register}
             error={errors.name?.message}
