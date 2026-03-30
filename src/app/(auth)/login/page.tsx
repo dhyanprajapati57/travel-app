@@ -9,6 +9,8 @@ import InputField from "../../componenets/inputfaild";
 import Button from "../../componenets/button";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, LoginFormData } from "../../schema/authschema";
 
 type FormData = {
   email: string;
@@ -22,11 +24,13 @@ export default function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
+const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm<LoginFormData>({
+  resolver: zodResolver(loginSchema),
+});
 
   const onSubmit = async (data: FormData) => {
     const res = await dispatch(loginUser(data));
@@ -42,13 +46,11 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6">
-        
         <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">
           Login
         </h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          
           <InputField
             label="Email"
             type="email"
@@ -77,7 +79,9 @@ export default function Login() {
             </button>
           </div>
 
-          <Button type="submit">Login</Button>
+          <Button type="submit" className="w-auto px-5 py-2 text-sm rounded-lg">
+            Login
+          </Button>
         </form>
 
         <p className="text-center text-sm mt-4">

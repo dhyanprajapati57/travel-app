@@ -52,5 +52,11 @@
     "name": "Amethyst Jones",
     "email": "xocamepaf@yopmail.com",
     "password": "123456"
+  },
+  {
+    "id": 10,
+    "name": "Quynn Dorsey",
+    "email": "rucowojo@yopmail.com",
+    "password": "123456"
   }
 ]

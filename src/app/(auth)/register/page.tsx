@@ -9,6 +9,8 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/slice/authslice";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema, RegisterFormData } from "../../schema/authschema";
 
 type FormData = {
   name: string;
@@ -23,11 +25,13 @@ export default function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
+const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm<RegisterFormData>({
+  resolver: zodResolver(registerSchema),
+});
 
   const onSubmit = async (data: FormData) => {
     const res = await dispatch(registerUser(data));
@@ -46,13 +50,11 @@ export default function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6">
-        
         <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">
           Register
         </h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          
           <InputField
             label="Name"
             type="text"
@@ -90,7 +92,9 @@ export default function Register() {
             </button>
           </div>
 
-          <Button type="submit">Register</Button>
+          <Button type="submit" className="w-auto px-5 py-2 text-sm rounded-lg">
+            Register
+          </Button>
         </form>
 
         <p className="text-center text-sm mt-5">
