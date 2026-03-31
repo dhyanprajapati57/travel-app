@@ -19,7 +19,7 @@ export const fetchFlights = createAsyncThunk<
         err.response?.data?.message || "Failed to fetch flights"
       );
     }
-  }
+  } 
 );
 
 interface FlightState {
@@ -38,7 +38,7 @@ const flightSlice = createSlice({
   name: "flights",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: (builder) => { 
     builder
       .addCase(fetchFlights.pending, (state) => {
         state.loading = true;

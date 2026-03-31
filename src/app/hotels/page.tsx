@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,38 +14,50 @@ export default function Hotels() {
   const dispatch = useDispatch<AppDispatch>();
 
   const { hotels, loading } = useSelector(
-    (state: RootState) => state.hotels  
+    (state: RootState) => state.hotels
   );
 
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  //  safe param access
+  //  Get city from URL
   const city = searchParams?.get("city") || "";
 
+  //  Controlled input state
+  const [searchCity, setSearchCity] = useState(city);
+
+  //  Sync input when URL changes
+  useEffect(() => {
+    setSearchCity(city);
+  }, [city]);
+
+  //  Fetch hotels
   useEffect(() => {
     dispatch(fetchHotels());
   }, [dispatch]);
 
-  //  safe filtering
-  const filteredHotels = hotels?.filter((h) => {
-    return city
-      ? h?.city?.toLowerCase().includes(city.toLowerCase())
-      : true;
-  });
+  //  Filter hotels (FIXED)
+const filteredHotels = useMemo(() => {
+  return hotels?.filter((h) => {
+    if (!searchCity) return true;
 
+    return h?.city
+      ?.toLowerCase()
+      .trim()
+      .includes(searchCity.toLowerCase().trim());
+  });
+}, [hotels, searchCity]);
+
+  //  Search handler
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
-
-    //  already correct
-    const cityVal = form.get("city")?.toString() || "";
-
-    router.push(`/hotels?city=${cityVal}`);
+    router.push(`/hotels?city=${searchCity}`);
   };
+
 
   return (
     <div className="relative min-h-screen">
+      {/* Background video */}
       <video
         autoPlay
         loop
@@ -63,15 +75,16 @@ export default function Hotels() {
           Available Hotels
         </h1>
 
-        {/* Search */}
+        {/* 🔍 Search */}
         <form
           onSubmit={handleSearch}
           className="mb-6 flex flex-col md:flex-row gap-3 bg-white/50 backdrop-blur-md p-4 rounded-lg"
         >
           <input
             name="city"
+            value={searchCity}
+            onChange={(e) => setSearchCity(e.target.value)}
             placeholder="Search by city"
-            defaultValue={city}
             className="px-3 py-2 rounded w-full text-black"
           />
           <Button className="bg-orange-600 hover:bg-orange-700 px-4 py-1 text-sm w-auto">
@@ -79,14 +92,14 @@ export default function Hotels() {
           </Button>
         </form>
 
-        {/* Hotels */}
+        {/*  Hotels */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {loading ? (
             <p>Loading...</p>
-          ) : filteredHotels?.length === 0 ? ( //  safe length
+          ) : filteredHotels?.length === 0 ? (
             <p className="text-center col-span-2">No hotels found</p>
           ) : (
-            filteredHotels?.map((hotel) => ( //  safe map
+            filteredHotels.map((hotel) => (
               <HotelCard key={hotel?.id} hotel={hotel} />
             ))
           )}
