@@ -2,67 +2,37 @@
   {
     "id": 1,
     "name": "Dhyan Prajapati",
-    "email": "dhyan@example.com",
+    "email": "dhyan@yopmail.com",
     "password": "123456"
   },
   {
     "id": 2,
-    "name": "Sister User",
-    "email": "sister@example.com",
+    "name": "harsh parekha",
+    "email": "harsh@yopmail.com",
     "password": "123456"
   },
   {
     "id": 3,
-    "name": "Mother User",
-    "email": "mother@example.com",
+    "name": "yug patel",
+    "email": "yug@yopmail.com",
     "password": "123456"
   },
   {
     "id": 4,
-    "name": "Cleo Russo",
-    "email": "jawuqusude@yopmail.com",
+    "name": "patu parekh",
+    "email": "patu@yopmail.com",
     "password": "123456"
   },
   {
     "id": 5,
-    "name": "Lance Horn",
-    "email": "laneputy@yopmail.com",
+    "name": "ronak valund",
+    "email": "ronak@yopmail.com",
     "password": "123456"
   },
   {
     "id": 6,
-    "name": "Ryan Norman",
-    "email": "gyreva@yopmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 7,
-    "name": "Hayley Mays",
-    "email": "bohuj@yopmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 8,
-    "name": "Barry Knight",
-    "email": "tidamavaca@yopmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 9,
-    "name": "Amethyst Jones",
-    "email": "xocamepaf@yopmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 10,
-    "name": "Quynn Dorsey",
-    "email": "rucowojo@yopmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 11,
-    "name": "Cheyenne Manning",
-    "email": "newylupam@yopmail.com",
+    "name": "alnzo  ",
+    "email": "alanzo@yopmail.com",
     "password": "123456"
   }
 ]

@@ -105,7 +105,7 @@ const filteredHotels = useMemo(() => {
           <Button
             type="submit"
             disabled={isPending}
-            className="bg-orange-600 hover:bg-orange-700 px-4 py-1 text-sm w-auto"
+            className="bg-orange-500 hover:bg-orange-700 px-4 py-1 text-sm w-auto"
           >
             {isPending ? "Searching..." : "Search"}
           </Button>
@@ -123,7 +123,7 @@ const filteredHotels = useMemo(() => {
                 setSortOrder(value);
               });
             }}
-            className="bg-orange-600 text-white hover:bg-orange-700 px-3 py-2 rounded-md shadow-md border focus:outline-none focus:ring-2 text-sm"
+            className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 rounded-md shadow-md border focus:outline-none focus:ring-2 text-sm"
           >
             <option value="">Sort by Price</option>
             <option value="low">Price: Low → High</option>
