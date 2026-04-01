@@ -1,11 +1,7 @@
 //  imports
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch } from "../store";
-import {
-  loginService,
-  registerService,
-} from "@/app/lib/service/auth.service";
-
+import { loginService, registerService } from "@/app/lib/service/auth.service";
 
 //  types
 interface User {
@@ -21,7 +17,6 @@ interface AuthState {
   message: string | null;
 }
 
-
 //  initial state
 const initialState: AuthState = {
   user: null,
@@ -29,7 +24,6 @@ const initialState: AuthState = {
   error: null,
   message: null,
 };
-
 
 //  slice
 const authSlice = createSlice({
@@ -45,6 +39,8 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.loading = false;
       state.message = "Login successful";
+
+      //  Save to localStorage
     },
     registerSuccess: (state, action: PayloadAction<string>) => {
       state.loading = false;
@@ -60,62 +56,43 @@ const authSlice = createSlice({
   },
 });
 
-
 //  export actions
-export const {
-  authStart,
-  loginSuccess,
-  registerSuccess,
-  authFailure,
-  logout,
-} = authSlice.actions;
-
+export const { authStart, loginSuccess, registerSuccess, authFailure, logout } =
+  authSlice.actions;
 
 //  export reducer
 export default authSlice.reducer;
 
-
-
-
 // LOGIN
-export const loginUser = (data: {
-  email: string;
-  password: string;
-}) => async (dispatch: AppDispatch) => {
-  dispatch(authStart());
+export const loginUser =
+  (data: { email: string; password: string }) =>
+  async (dispatch: AppDispatch) => {
+    dispatch(authStart());
 
-  try {
-    const res = await loginService(data);
-    dispatch(loginSuccess(res.data));
-    return res
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    dispatch(
-      authFailure(
-        error?.response?.data?.message || "Login failed"
-      )
-    );
-    return error
-  }
-};
+    try {
+      const res = await loginService(data);
+      dispatch(loginSuccess(res.data));
+      return res;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      dispatch(authFailure(error?.response?.data?.message || "Login failed"));
+      return error;
+    }
+  };
 
 // REGISTER
-export const registerUser = (data: {
-  name: string;
-  email: string;
-  password: string;
-}) => async (dispatch: AppDispatch) => {
-  dispatch(authStart());
+export const registerUser =
+  (data: { name: string; email: string; password: string }) =>
+  async (dispatch: AppDispatch) => {
+    dispatch(authStart());
 
-  try {
-    const res = await registerService(data);
-    dispatch(registerSuccess(res.data.message));
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    dispatch(
-      authFailure(
-        error?.response?.data?.message || "Register failed"
-      )
-    );
-  }
-};
+    try {
+      const res = await registerService(data);
+      dispatch(registerSuccess(res.data.message));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      dispatch(
+        authFailure(error?.response?.data?.message || "Register failed"),
+      );
+    }
+  };
