@@ -1,98 +1,54 @@
 import { Hotel } from "../../utils/types/hotel";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getHotelListService } from "@/app/lib/service/hotel.service";
-import { AppDispatch } from "../store";
 
 interface HotelListState {
-  // mapData: any;
-  data: Hotel []| null;
-  error: string | null;
-  message: string | null;
+  data: Hotel[];
   loading: boolean;
-  loadingMore: boolean;
+  error: string | null;
 }
 
 const initialState: HotelListState = {
- 
   data: [],
+  loading: false,
   error: null,
-  message: null,
-  loading: true,
-  loadingMore: false,
 };
+
+//  Async Thunk (BEST PRACTICE)
+export const getHotelList = createAsyncThunk(
+  "hotels/getHotelList",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await getHotelListService();
+      return response?.data;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return rejectWithValue("Failed to fetch hotels");
+    }
+  }
+);
 
 const hotelSlice = createSlice({
   name: "hotels",
   initialState,
-  reducers: {
-    create: (state) => {
-      state.loading = true;
-    },
-    createSuccess: (state, action) => {
-      state.data = action.payload;
-      state.error = null;
-      state.message = "Data saved successfully";
-      state.loading = false;
-    },
-    createFailure: (state, action) => {
-      state.error = action.payload;
-      state.loading = false;
-    },
-    update: (state, action) => {
-      if (state.data) {
-        state.data = [...state?.data, ...action?.payload];
-        state.message = "Data updated successfully";
+  reducers: {},
+
+  //  Clean handling
+  extraReducers: (builder) => {
+    builder
+      .addCase(getHotelList.pending, (state) => {
+        state.loading = true;
         state.error = null;
-      } else {
-        state.error = "No data available to update";
-      }
-      state.loading = false;
-    },
-    remove: (state) => {
-      state.data = null;
-      state.message = "Data deleted successfully";
-      state.error = null;
-      state.loading = false;
-    },
-    reset: (state) => {
-      state.data = null;
-      state.error = null;
-      state.message = null;
-      state.loading = false;
-    },
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    },
-    setLoadingMore: (state, action) => {
-      state.loadingMore = action.payload;
-    },
+      })
+      .addCase(getHotelList.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload || [];
+      })
+      .addCase(getHotelList.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      });
   },
 });
 
-export const {
-  create,
-  createSuccess,
-  createFailure,
-  update,
-  remove,
-  reset,
-  setLoading,
-  setLoadingMore,
-  // setMapData,
-} = hotelSlice.actions;
-
 export default hotelSlice.reducer;
-// check this
-export const getHotelList = () => async (dispatch: AppDispatch) => {
-  dispatch(setLoading(true));
-  dispatch(create());
-  try {
-    const response = await getHotelListService();
-
-    dispatch(createSuccess(response?.data));
-  } catch (error) {
-    console.error("[getHotelList error:]", error);
-    dispatch(createFailure("Failed to Hotel List data"));
-  }
-  dispatch(setLoading(false));
-};

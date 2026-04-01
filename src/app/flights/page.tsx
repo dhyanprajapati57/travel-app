@@ -1,4 +1,3 @@
-// app/flights/page.tsx
 import { Suspense } from "react";
 import Flights from "./flights";
 

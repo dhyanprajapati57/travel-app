@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 
   //  Store JWT in cookie
   res.cookies.set("token", token, {
-    httpOnly: true,
+    httpOnly: false,
     path: "/",
   });
 

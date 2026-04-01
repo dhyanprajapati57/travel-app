@@ -8,14 +8,10 @@ import { useForm } from "react-hook-form";
 import InputField from "../../componenets/common/inputfaild";
 import { Button } from "../../componenets/ui/button";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "../../utils/schema/authschema";
-
-type FormData = {
-  email: string;
-  password: string;
-};
+import LoginSkeleton from "@/app/componenets/Skeleton/loginskeleton";
 
 export default function Login() {
   const router = useRouter();
@@ -23,24 +19,47 @@ export default function Login() {
   const dispatch: any = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm<LoginFormData>({
-  resolver: zodResolver(loginSchema),
-});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
 
-  const onSubmit = async (data: FormData) => {
-    const res = await dispatch(loginUser(data));
-    if (res.status === 200) {
-      toast.success("Login Successful", { autoClose: 1000 });
-      router.push("/dashboard");
-    } else {
-      toast.error("Invalid credentials", { autoClose: 1000 });
+  //  Prevent hydration + show skeleton briefly
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const onSubmit = async (data: LoginFormData) => {
+    setIsSubmitting(true);
+
+    try {
+      const res = await dispatch(loginUser(data));
+
+      if (res?.status === 200) {
+        toast.success("Login Successful", { autoClose: 1000 });
+        router.push("/dashboard");
+      } else {
+        toast.error("Invalid credentials", { autoClose: 1000 });
+      }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      toast.error("Something went wrong");
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
+  //  Skeleton first
+  if (!isMounted) {
+    return <LoginSkeleton />;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4">
@@ -72,19 +91,23 @@ const {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-9.5 text-gray-500"
+              className="absolute right-3 top-9 text-gray-500"
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
 
-          <Button type="submit" className="w-auto px-5 py-2 text-sm rounded-lg">
-            Login
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full px-5 py-2 text-sm rounded-lg"
+          >
+            {isSubmitting ? "Logging in..." : "Login"}
           </Button>
         </form>
 
         <p className="text-center text-sm mt-4">
-          Dont have an account?{" "}
+          Don’t have an account?{" "}
           <a href="/register" className="text-blue-600">
             Register
           </a>

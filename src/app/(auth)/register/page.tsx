@@ -6,17 +6,12 @@ import { useForm } from "react-hook-form";
 import InputField from "../../componenets/common/inputfaild";
 import { Button } from "../../componenets/ui/button";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/slice/auth.slice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, RegisterFormData } from "../../utils/schema/authschema";
-
-type FormData = {
-  name: string;
-  email: string;
-  password: string;
-};
+import RegisterSkeleton from "@/app/componenets/Skeleton/registerskeleton";
 
 export default function Register() {
   const router = useRouter();
@@ -24,28 +19,50 @@ export default function Register() {
   const dispatch: any = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm<RegisterFormData>({
-  resolver: zodResolver(registerSchema),
-});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema),
+  });
 
-  const onSubmit = async (data: FormData) => {
-    const res = await dispatch(registerUser(data));
+  //  Skeleton on mount
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
 
-    if (res.meta.requestStatus === "fulfilled") {
-      toast.success("Registration successful", { autoClose: 1000 });
+  const onSubmit = async (data: RegisterFormData) => {
+    setIsSubmitting(true);
 
-      setTimeout(() => {
-        router.push("/login");
-      }, 1000);
-    } else {
-      toast.error("Something went wrong", { autoClose: 1000 });
+    try {
+      const res = await dispatch(registerUser(data));
+
+      if (res.meta?.requestStatus === "fulfilled") {
+        toast.success("Registration successful", { autoClose: 1000 });
+
+        setTimeout(() => {
+          router.push("/login");
+        }, 1000);
+      } else {
+        toast.error("Something went wrong", { autoClose: 1000 });
+      }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      toast.error("Something went wrong");
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
+  //  Show skeleton first
+  if (!isMounted) {
+    return <RegisterSkeleton />;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4">
@@ -58,7 +75,7 @@ const {
           <InputField
             label="Name"
             type="text"
-            placeholder="Enter name"  
+            placeholder="Enter name"
             name="name"
             register={register}
             error={errors.name?.message}
@@ -86,14 +103,18 @@ const {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-9.5 text-gray-500"
+              className="absolute right-3 top-9 text-gray-500"
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
 
-          <Button type="submit" className="w-auto px-5 py-2 text-sm rounded-lg">
-            Register
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full px-5 py-2 text-sm rounded-lg"
+          >
+            {isSubmitting ? "Registering..." : "Register"}
           </Button>
         </form>
 

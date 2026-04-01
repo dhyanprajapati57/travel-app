@@ -1,16 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import HomeHeroSkeleton from "../app/componenets/Skeleton/homeSkeleton";
 
 export default function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <div className="relative h-screen w-full overflow-hidden">
       
-      {/*  Background Video */}
+      {/* Skeleton Overlay */}
+      {!isLoaded && <HomeHeroSkeleton />}
+
+      {/* Background Video */}
       <video
         autoPlay
         loop
         muted
+        onLoadedData={() => setIsLoaded(true)}
         className="absolute top-0 left-0 w-full h-full object-cover"
       >
         <source src="/video.mp4" type="video/mp4" />
@@ -18,8 +26,12 @@ export default function Home() {
 
       <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-        
+      {/* Content */}
+      <div
+        className={`relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 transition-opacity duration-500 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <h1 className="text-5xl font-bold mb-4">
           Welcome to Travel App
         </h1>
@@ -33,47 +45,31 @@ export default function Home() {
             href="/flights"
             className="bg-purple-600 px-6 py-3 rounded-lg hover:bg-purple-700 transition transform hover:scale-105"
           >
-             See Flights
+            See Flights
           </Link>
 
           <Link
             href="/hotels"
             className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105"
           >
-             See Hotels
+            See Hotels
           </Link>
         </div>
 
         <div className="flex gap-3 flex-wrap justify-center">
-          <Link
-            href="/csr"
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400"
-          >
+          <Link href="/csr" className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400">
             CSR
           </Link>
-
-          <Link
-            href="/isr"
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400"
-          >
+          <Link href="/isr" className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400">
             ISR
           </Link>
-
-          <Link
-            href="/ssg"
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400"
-          >
+          <Link href="/ssg" className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400">
             SSG
           </Link>
-
-          <Link
-            href="/ssr"
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400"
-          >
+          <Link href="/ssr" className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400">
             SSR
           </Link>
         </div>
-
       </div>
     </div>
   );

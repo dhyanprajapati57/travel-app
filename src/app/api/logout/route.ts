@@ -4,7 +4,7 @@ export async function GET() {
   const res = NextResponse.json({ success: true });
 
   res.cookies.set("token", "", {
-    httpOnly: true,
+    httpOnly: false,
     expires: new Date(0),
   });
 
