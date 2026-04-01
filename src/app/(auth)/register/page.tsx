@@ -3,14 +3,14 @@
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form";
-import InputField from "../../componenets/inputfaild";
+import InputField from "../../componenets/common/inputfaild";
 import { Button } from "../../componenets/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../redux/slice/authslice";
+import { registerUser } from "../../redux/slice/auth.slice";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema, RegisterFormData } from "../../schema/authschema";
+import { registerSchema, RegisterFormData } from "../../utils/schema/authschema";
 
 type FormData = {
   name: string;

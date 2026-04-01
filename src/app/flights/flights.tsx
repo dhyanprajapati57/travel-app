@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFlights } from "../redux/slice/flightslice";
+import { getFlights } from "../redux/slice/flight.slice";
 import { RootState, AppDispatch } from "../redux/store";
 
 import FlightCard from "../componenets/flightcard";
-import Button from "../componenets/button";
+import Button from "../componenets/common/button";
 
 // IndexedDB
 import {
@@ -43,7 +43,7 @@ export default function Flights() {
   //  Fetch flights
   useEffect(() => {
     if (flights?.length === 0) {
-      dispatch(fetchFlights());
+      dispatch(getFlights());
     }
   }, [dispatch, flights?.length]);
 
@@ -194,13 +194,13 @@ const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
                   );
                 }}
               >
-                ✈️ {item.from} → {item.to}
+                 {item.from} → {item.to}
               </div>
             ))
           )}
         </div>
 
-        {/* ✈️ Flights */}
+        {/*  Flights */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {loading && <p>Loading...</p>}
 

@@ -2,15 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/slice/authslice";
+import { loginUser } from "../../redux/slice/auth.slice";
 import { toast, ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form";
-import InputField from "../../componenets/inputfaild";
+import InputField from "../../componenets/common/inputfaild";
 import { Button } from "../../componenets/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, LoginFormData } from "../../schema/authschema";
+import { loginSchema, LoginFormData } from "../../utils/schema/authschema";
 
 type FormData = {
   email: string;
@@ -34,8 +34,7 @@ const {
 
   const onSubmit = async (data: FormData) => {
     const res = await dispatch(loginUser(data));
-
-    if (res.meta.requestStatus === "fulfilled") {
+    if (res.status === 200) {
       toast.success("Login Successful", { autoClose: 1000 });
       router.push("/dashboard");
     } else {

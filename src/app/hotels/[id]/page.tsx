@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Hotel } from "../../types/hotel";
-import Button from "../../componenets/button";
+import { Hotel } from "../../utils/types/hotel";
+import Button from "../../componenets/common/button";
 import { toast, ToastContainer } from "react-toastify";
 import Link from "next/link";
-import axios from "../../lib/axios";
+import axios from "../../lib/axios/axios";
 
 export default function HotelDetails() {
   const params = useParams();

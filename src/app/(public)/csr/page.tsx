@@ -71,7 +71,7 @@ export default function CSRPage() {
         <h2 className="text-xl font-semibold mb-2">Users (CSR)</h2>
         <p>
           Total Users fetched in browser: <strong>{users.length}</strong>
-        </p>
+        </p>      
       </section>
       <div>
         <button>

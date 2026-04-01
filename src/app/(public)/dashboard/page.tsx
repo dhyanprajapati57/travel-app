@@ -6,9 +6,9 @@ import jwt from "jsonwebtoken";
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
-import LogoutButton from "../componenets/logoutbutton";
-import { User } from "../types/user";
-import { Booking } from "../types/Booking";
+import LogoutButton from "../../componenets/logoutbutton";
+import { User } from "../../utils/types/user";
+import { Booking } from "../../utils/types/Booking";
 
 const SECRET = "mysecret";
 

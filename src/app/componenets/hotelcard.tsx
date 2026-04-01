@@ -1,5 +1,5 @@
 "use client";
-import { Hotel } from "../types/hotel";
+import { Hotel } from "../utils/types/hotel";
 import Link from "next/link";
 
 interface HotelCardProps {

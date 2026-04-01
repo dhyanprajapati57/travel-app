@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { Flight } from "../../types/flight";
+import { Flight } from "../../utils/types/flight";
 import { toast, ToastContainer } from "react-toastify";
 import Link from "next/link";
-import Button from "../../componenets/button";
-import axios from "../../lib/axios"; //  Axios
+import Button from "../../componenets/common/button";
+import axios from "../../lib/axios/axios"; //  Axios
 
 export default function FlightDetails() {
   const params = useParams();

@@ -1,5 +1,5 @@
 "use client";
-import { Flight } from "../types/flight";
+import { Flight } from "../utils/types/flight";
 import Link from "next/link";
 
 interface FlightCardProps {
