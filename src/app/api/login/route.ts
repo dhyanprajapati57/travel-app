@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 const SECRET = "mysecret"; 
 export async function POST(req: Request) {
   const body = await req.json();
-
+  console.log({body})
   const user = users.find(
     (u) => u.email === body.email && u.password === body.password
   );
@@ -30,6 +30,7 @@ export async function POST(req: Request) {
   res.cookies.set("token", token, {
     httpOnly: false,
     path: "/",
+    //  sameSite: "lax",//aa add karyu
   });
 
   return res;

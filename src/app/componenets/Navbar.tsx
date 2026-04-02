@@ -60,6 +60,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
               onClick={async () => {
                 await fetch("/api/logout");
                 router.push("/login");
+                router.refresh(); 
               }}
               className="px-4 py-2 rounded-lg bg-orange-500 text-white text-sm font-medium hover:bg-orange-700 transition-all duration-300"
             >
