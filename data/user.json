@@ -7,32 +7,26 @@
   },
   {
     "id": 2,
-    "name": "harsh parekha",
+    "name": "harsh ",
     "email": "harsh@yopmail.com",
     "password": "123456"
   },
   {
     "id": 3,
-    "name": "yug patel",
-    "email": "yug@yopmail.com",
+    "name": "Hayfa Battle",
+    "email": "kosuhu@yopmail.com",
     "password": "123456"
   },
   {
     "id": 4,
-    "name": "patu parekh",
-    "email": "patu@yopmail.com",
+    "name": "Maris Anthony",
+    "email": "jadesy@yopmail.com",
     "password": "123456"
   },
   {
     "id": 5,
-    "name": "ronak valund",
-    "email": "ronak@yopmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 6,
-    "name": "alnzo  ",
-    "email": "alanzo@yopmail.com",
+    "name": "dhyan k prajapati",
+    "email": "dhyank@yopmail.com",
     "password": "123456"
   }
 ]

@@ -36,29 +36,31 @@ export default function Register() {
     return () => clearTimeout(timer);
   }, []);
 
-  const onSubmit = async (data: RegisterFormData) => {
-    setIsSubmitting(true);
+ const onSubmit = async (data: RegisterFormData) => {
+  setIsSubmitting(true);
 
-    try {
-      const res = await dispatch(registerUser(data));
+  try {
+    const res = await dispatch(registerUser(data));
 
-      if (res.meta?.requestStatus === "fulfilled") {
-        toast.success("Registration successful", { autoClose: 1000 });
+    console.log("RES:", res); 
 
-        setTimeout(() => {
-          router.push("/login");
-        }, 1000);
-      } else {
-        toast.error("Something went wrong", { autoClose: 1000 });
-      }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
-      toast.error("Something went wrong");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    toast.success(res.message || "Registration successful", {
+      autoClose: 1000,
+    });
 
+    router.push("/login");
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    console.log("ERROR:", err?.response?.data || err);
+
+    toast.error(
+      err?.response?.data?.message || err.message || "Something went wrong"
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   //  Show skeleton first
   if (!isMounted) {
     return <RegisterSkeleton />;

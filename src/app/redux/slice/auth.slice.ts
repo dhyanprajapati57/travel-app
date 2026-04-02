@@ -88,11 +88,18 @@ export const registerUser =
 
     try {
       const res = await registerService(data);
+
       dispatch(registerSuccess(res.data.message));
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+      return res.data; 
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      dispatch(
-        authFailure(error?.response?.data?.message || "Register failed"),
-      );
+      const errMsg =
+        error?.response?.data?.message || "Register failed";
+
+      dispatch(authFailure(errMsg));
+
+      throw new Error(errMsg); 
     }
   };
