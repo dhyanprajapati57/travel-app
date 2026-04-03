@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import CSRPageSkeleton from "@/app/componenets/Skeleton/csrakeleton";
+
 
 export default function CSRPage() {
   const [posts, setPosts] = useState<unknown[]>([]);
@@ -28,8 +30,7 @@ export default function CSRPage() {
     fetchData();
   }, []);
 
-  if (loading) return <p className="p-6">Loading data...</p>;
-
+if (loading) return <CSRPageSkeleton />;
   return (
     <div className="p-6 space-y-6">
       {/* Page Header */}
