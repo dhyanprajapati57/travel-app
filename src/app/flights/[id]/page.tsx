@@ -90,11 +90,9 @@ export default function FlightDetails() {
             <span className="font-semibold text-gray-900">To:</span>{" "}
             {flight.to}
           </p>
-          <p>
+                 <p>
             <span className="font-semibold text-gray-900">Price:</span>{" "}
-            <span className="text-green-600 font-bold">
-              ₹{flight.price}
-            </span>
+            <span className="text-black font-bold">₹{flight.price}</span>
           </p>
         </div>
 
